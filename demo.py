@@ -89,7 +89,9 @@ class MainWindow(QMainWindow):
                 self.table_widget.setItem(row,col,item) 
     
     def initUI(self):
+        # กำหนด ขั้นต่ำการของหน้าจอ setMinimumSize(w,h)
         self.setMinimumSize(600,500)
+        # กำหนด ชื่อหน้าจอ
         self.setWindowTitle("จัดการสต๊อกสินค้า")
 
         # สร้างหน้าต่างหลัก
