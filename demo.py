@@ -1,8 +1,9 @@
 from PyQt6.QtWidgets import QMainWindow,QApplication,QMessageBox,QPushButton,QLabel,QLineEdit, QWidget,QVBoxLayout,QTableWidget,QTableWidgetItem,QHBoxLayout
 import sys
 import sqlite3
-from PyQt6.QtCore import Qt,QSize
-from PyQt6.QtGui import QAction,QIcon
+from datetime import date
+from PyQt6.QtGui import QIcon
+from PyQt6.QtCore import Qt
 
 # กำหนด css ปุ่ม
 stylesheet="""
@@ -46,6 +47,7 @@ stylesheet="""
 
 
 class MainWindow(QMainWindow):
+    _dev = "Valentinote"
 
     def __init__(self):
         super().__init__()
@@ -121,7 +123,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(QLabel("จำนวนสินค้า :"))
         layout.addWidget(self.quantity_edit)
         
-        # เพิ่ม layout จัดเรียงแบบ แนวนอน
+        # เพิ่ม layout จัดเรียง ปุ่ม แบบ แนวนอน
         btn_layout1 = QHBoxLayout()
         btn_layout2 = QHBoxLayout()
         # ปุ่มบันทึกสินค้า
@@ -147,6 +149,12 @@ class MainWindow(QMainWindow):
         update_button.clicked.connect(self.update_product)
         btn_layout2.addWidget(update_button)
         layout.addLayout(btn_layout2)
+
+        year = date.today().year
+        modify_dev = QLabel(self)
+        modify_dev.setText(f"Copyright @{year} พัฒนาโดย {self._dev}")
+        modify_dev.setAlignment(Qt.AlignmentFlag.AlignRight)
+        layout.addWidget(modify_dev)
 
     # method ต่างๆ
     def add_product(self): # ฟังก์ชั่นเพิ่มสินค้า
