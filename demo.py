@@ -200,6 +200,11 @@ class MainWindow(QMainWindow):
                 QMessageBox.information(self,'แจ้งเตือน','ลบข้อมูลสินค้าเรียบร้อย')
                 # โหลดข้อมูลซ้ำในตาราง
                 self.load_data()
+                # เคลียร์ข้อมูลในช่องฟอร์ม
+                self.name_edit.clear()
+                self.price_edit.clear()
+                self.description_edit.clear()
+                self.quantity_edit.clear()
         except AttributeError:
             QMessageBox.warning(self,"แจ้งเตือน","กรุณาเลือกแถวและกดปุ่ม ' แก้ไขข้อมูล ' ก่อนทำการกดปุ่ม ' ลบข้อมูล '")
     
